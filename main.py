@@ -1,9 +1,10 @@
 import csv
+from operator import index
 import numpy
 import random
 import time
 import math
-
+import pandas as pd
 
 vetor=[]
 vetor1=[]
@@ -69,7 +70,7 @@ Repetir_meu_código(10) # Repetir 10 vezes
 def Repetir_meu_código(vezes2):
     
     for v in range(vezes2):
-        #Qatar
+       
         t1 = time.time()
         arq = open("western.tsp") 
         arq = open("western.tsp")
@@ -95,7 +96,7 @@ Repetir_meu_código(10) # Repetir 10 vezes
 def Repetir_meu_código(vezes3):
     
     for v in range(vezes3):
-        #Qatar
+       
         t1 = time.time()
         arq = open("zimbabwe.tsp") 
         arq = open("zimbabwe.tsp")
@@ -180,7 +181,7 @@ print("======================")
 
 
 avg = sum(vetor)/len(vetor)
-print(vetor3)
+print(vetor)
 
 print(avg)
 
@@ -189,30 +190,30 @@ print(avg)
 print("=====================================================================================")
 mean = sum(vetor4) / len(vetor4)
 var = sum((l-avg)**2 for l in vetor4) / len(vetor4)
-st_dev = math.sqrt(var)
+st_dev4 = math.sqrt(var)
 
-print("O desvio padrao é " + str(st_dev))
+print("O desvio padrao é " + str(st_dev4))
 
 
-mean = sum(vetor3) / len(vetor4)
+mean = sum(vetor3) / len(vetor3)
 var = sum((l-avg)**2 for l in vetor3) / len(vetor3)
-st_dev = math.sqrt(var)
+st_dev3 = math.sqrt(var)
 
-print("O desvio padrao é " + str(st_dev))
+print("O desvio padrao é " + str(st_dev3))
 
 
 mean = sum(vetor2) / len(vetor2)
 var = sum((l-avg)**2 for l in vetor2) / len(vetor2)
-st_dev = math.sqrt(var)
+st_dev2 = math.sqrt(var)
 
-print("O desvio padrao é " + str(st_dev))
+print("O desvio padrao é " + str(st_dev2))
 
 
 mean = sum(vetor1) / len(vetor1)
 var = sum((l-avg)**2 for l in vetor1) / len(vetor1)
-st_dev = math.sqrt(var)
+st_dev1 = math.sqrt(var)
 
-print("O desvio padrao é " + str(st_dev))
+print("O desvio padrao é " + str(st_dev1))
 
 
 mean = sum(vetor) / len(vetor)
@@ -222,5 +223,53 @@ st_dev = math.sqrt(var)
 print("O desvio padrao é " + str(st_dev))
 
 
+StrangerThings = {
+     0: {
+        'Instancia': 'Djibouti',
+        'Autoria': 'Sebastien',
+        'algorithmo':'BTA',
+        'q-medio': avg4,
+        'q-desvio':st_dev4,
+        't-medio':''
+    },
+    1: {
+        'Instancia': 'Qatar',
+        'Autoria': 'Sebastien',
+        'algorithmo':'BTA',
+        'q-medio': avg,
+        'q-desvio':st_dev,
+        't-medio':''
+        
+    },
+    2: {
+        'Instancia': 'Uruguay',
+        'Autoria': 'Sebastien',
+        'algorithmo':'BTA',
+        'q-medio': avg1,
+        'q-desvio':st_dev1,
+        't-medio':''
+    },
+    3: {
+        'Instancia': 'Western',
+        'Autoria': 'Sebastien',
+        'algorithmo':'BTA',
+        'q-medio': avg2,
+        'q-desvio':st_dev2,
+        't-medio':''
+    },
+    
+      4: {
+        'Instancia': 'Zimbabwe',
+        'Autoria': 'Sebastien',
+        'algorithmo':'BTA',
+        'q-medio': avg3,
+        'q-desvio':st_dev3,
+        't-medio':''
+    },
+}
 
+dataFrameObj = pd.DataFrame(StrangerThings)
+dfObj = dataFrameObj.transpose()
+print(dfObj)
 
+dataFrameObj.to_csv('dados.csv', index= False )
